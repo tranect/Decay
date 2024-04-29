@@ -1848,7 +1848,7 @@ end
     end)
     
     AntiAimTab:AddToggle('PredictiorRoblox', {
-        Text = 'Predictor',
+        Text = 'Hitbox',
         Default = false, 
         Tooltip = 'Predictor Enabled', 
     })
@@ -1876,9 +1876,9 @@ end
     end)
     
     AntiAimTab:AddToggle('VelUnderGroundToggle', {
-        Text = 'Velocity Underground',
+        Text = 'Underground Anti',
         Default = false, 
-        Tooltip = 'Velocity Underground Enabled', 
+        Tooltip = ' Underground Anti Enabled', 
     })
     
     Toggles.VelUnderGroundToggle:OnChanged(function(newValue11)
@@ -1886,7 +1886,7 @@ end
     end)
     
     AntiAimTab:AddSlider('VelocityUndergroundSLider', {
-        Text = 'V-Underground Velocity',
+        Text = 'Underground Anti Velocity',
     
         Default = 1,
         Min = 1,
