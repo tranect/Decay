@@ -1,3 +1,26 @@
+local HWIDTable = loadstring(game:HttpGet("https://raw.githubusercontent.com/tranect/HWIDs/main/HWIDstorage"))()
+
+-- Get the HWID of the current device
+local HWID = game:GetService("RbxAnalyticsService"):GetClientId()
+
+-- Check if the current HWID is present in the HWID storage table
+local isAllowed = false
+for _, storedHWID in pairs(HWIDTable) do
+    if storedHWID == HWID then
+        isAllowed = true
+        break
+    end
+end
+
+-- If the HWID is not allowed, return
+if not isAllowed then
+    return
+end
+
+-- If the HWID is allowed and not already loaded, set the variable to true
+if not getgenv().lloaded then
+    getgenv().lloaded = true
+end
 if not LPH_OBFUSCATED then
     getfenv().LPH_NO_VIRTUALIZE = function(f) return f end;
 end
@@ -61,14 +84,14 @@ gui.TextLabel_1.TextSize = 20
 gui.TextLabel_1.Position = UDim2.new(0.479798, 0, 0.11245, 0)
 gui.TextLabel_1.Size = UDim2.new(0, 106, 0, 57)
 gui.TextLabel_1.Name = "TextLabel"
-gui.TextLabel_1.TextColor3 = Color3.fromRGB(13, 105, 172)
+gui.TextLabel_1.TextColor3 = Color3.fromRGB(223, 14, 217 )
 gui.TextLabel_1.BorderColor3 = Color3.fromRGB(0, 0, 0)
-gui.TextLabel_1.Text = "v1"
+gui.TextLabel_1.Text = "v Beta"
 gui.TextLabel_1.BackgroundTransparency = 1
 gui.TextLabel_1.Parent = gui.Frame
 
 gui.signin_load.BorderSizePixel = 0
-gui.signin_load.BackgroundColor3 = Color3.fromRGB(13, 105, 172)
+gui.signin_load.BackgroundColor3 = Color3.fromRGB(223, 14, 217 )
 gui.signin_load.FontFace = Font.new("rbxassetid://11702779517", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
 gui.signin_load.TextColor3 = Color3.fromRGB(255, 255, 255)
 gui.signin_load.Position = UDim2.new(0.161616, 0, 0.598394, 0)
@@ -108,7 +131,7 @@ gui.fps_checkbox.Size = UDim2.new(0, 20, 0, 20)
 gui.fps_checkbox.BorderColor3 = Color3.fromRGB(0, 0, 0)
 gui.fps_checkbox.Name = "fps_checkbox"
 gui.fps_checkbox.Position = UDim2.new(0.383838, 0, 0.751004, 0)
-gui.fps_checkbox.BackgroundColor3 = Color3.fromRGB(13, 105, 172)
+gui.fps_checkbox.BackgroundColor3 = Color3.fromRGB(223, 14, 217)
 gui.fps_checkbox.Parent = gui.Frame
 
 gui.UICorner_2.Name = "UICorner"
@@ -184,7 +207,39 @@ end)
 gui.signin_load.MouseButton1Click:Connect(function()
 gui.DecayLoader:Destroy()
 
+local notificationLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/laagginq/ui-libraries/main/xaxas-notification/src.lua"))();
+local notifications = notificationLibrary.new({            
+    NotificationLifetime = 5, 
+    NotificationPosition = "MiddleRight",
+    
+    TextFont = Enum.Font.Arcade,
+    TextColor = Color3.fromRGB(223, 14, 217 ),
+    TextSize = 15,
+    
+    TextStrokeTransparency = 0, 
+    TextStrokeColor = Color3.fromRGB(0, 0, 0)
+});
 
+local AkaliNotif = loadstring(game:HttpGet("https://raw.githubusercontent.com/tranect/notify/main/notify"))();
+local ANotify = AkaliNotif.Notify;
+
+getgenv().NotiMode = "Dys"
+
+function Notifications(NotiINFO)
+        if getgenv().NotiMode == "Dys" then
+            notifications:BuildNotificationUI();
+            notifications:Notify(NotiINFO);
+    else
+        if getgenv().NotiMode == "funeral" then
+            ANotify({
+                Description = NotiINFO;
+                Title = "DecayW";
+                Duration = 1;
+                });
+            end
+        end
+    end 
+        
     local InputService, TeleportService, RunService, Workspace, Lighting, Players, HttpService, StarterGui, ReplicatedStorage, TweenService, VirtualUser, PathFindingService, Stats = game:GetService("UserInputService"), game:GetService("TeleportService"), game:GetService("RunService"), game:GetService("Workspace"), game:GetService("Lighting"), game:GetService("Players"), game:GetService("HttpService"), game:GetService("StarterGui"), game:GetService("ReplicatedStorage"), game:GetService("TweenService"), game:GetService("VirtualUser"), game:GetService("PathfindingService"), game:GetService("Stats")
     local NewVector2, NewVector3, NewCFrame, NewAngle = Vector2.new, Vector3.new, CFrame.new, CFrame.Angles
     local NewRGB, NewHex = Color3.fromRGB, Color3.fromHex
@@ -403,7 +458,7 @@ gui.DecayLoader:Destroy()
     gui.TextLabel.Position = UDim2.new(0.321981, 0, 0.3125, 0)
     gui.TextLabel.Size = UDim2.new(0, 200, 0, 23)
     gui.TextLabel.Name = "TextLabel"
-    gui.TextLabel.TextColor3 = Color3.fromRGB(200, 200, 200)
+    gui.TextLabel.TextColor3 = Color3.fromRGB(223, 14, 217 )
     gui.TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
     gui.TextLabel.Text = "@nil"
     gui.TextLabel.BackgroundTransparency = 1
@@ -418,13 +473,13 @@ gui.DecayLoader:Destroy()
     gui.Frame_1.BorderColor3 = Color3.fromRGB(0, 0, 0)
     gui.Frame_1.Name = "Frame"
     gui.Frame_1.Position = UDim2.new(0.321981, 0, 0.625, 0)
-    gui.Frame_1.BackgroundColor3 = Color3.fromRGB(227, 181, 200)
+    gui.Frame_1.BackgroundColor3 = Color3.fromRGB(223, 14, 217 )
     gui.Frame_1.Parent = gui.Frame
     
     gui.TextLabel_1.TextStrokeTransparency = 0
     gui.TextLabel_1.BorderSizePixel = 0
-    gui.TextLabel_1.BackgroundColor3 = Color3.fromRGB(227, 181, 200)
-    gui.TextLabel_1.Font = Enum.Font.Code
+    gui.TextLabel_1.BackgroundColor3 = Color3.fromRGB(223, 14, 217 )
+    gui.TextLabel_1.Font = Enum.Font.Arcade
     gui.TextLabel_1.TextSize = 14
     gui.TextLabel_1.Position = UDim2.new(0.0584566, 0, 0, 0)
     gui.TextLabel_1.Size = UDim2.new(0, 185, 0, 20)
@@ -442,18 +497,18 @@ gui.DecayLoader:Destroy()
     gui.Frame_2.Size = UDim2.new(0, 323, 0, 2)
     gui.Frame_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
     gui.Frame_2.Name = "Frame"
-    gui.Frame_2.BackgroundColor3 = Color3.fromRGB(227, 181, 200)
+    gui.Frame_2.BackgroundColor3 = Color3.fromRGB(223, 14, 217 )
     gui.Frame_2.Parent = gui.Frame
     
     gui.TextLabel_2.TextStrokeTransparency = 0
     gui.TextLabel_2.BorderSizePixel = 0
-    gui.TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    gui.TextLabel_2.Font = Enum.Font.Code
+    gui.TextLabel_2.BackgroundColor3 = Color3.fromRGB(223, 14, 217 )
+    gui.TextLabel_2.Font = Enum.Font.Arcade
     gui.TextLabel_2.TextSize = 18
     gui.TextLabel_2.Position = UDim2.new(0.321981, 0, 4.07144, 0)
     gui.TextLabel_2.Size = UDim2.new(0, 200, 0, 43)
     gui.TextLabel_2.Name = "TextLabel"
-    gui.TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+    gui.TextLabel_2.TextColor3 = Color3.fromRGB(223, 14, 217 )
     gui.TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
     gui.TextLabel_2.Text = "nil"
     gui.TextLabel_2.BackgroundTransparency = 1
@@ -733,24 +788,22 @@ gui.DecayLoader:Destroy()
     end
     
     end)
-    
-    
-    
+
     local repo = 'https://raw.githubusercontent.com/wally-rblx/LinoriaLib/main/'
-    local Library = loadstring(game:HttpGet('https://pastebin.com/raw/7Tk5QM6R'))()
-    local ThemeManager = loadstring(game:HttpGet('https://pastebin.com/raw/WxMCy9be'))()
+    local Library = loadstring(game:HttpGet('https://raw.githubusercontent.com/tranect/Library/main/Library'))()
+    local ThemeManager = loadstring(game:HttpGet('https://raw.githubusercontent.com/tranect/theme/main/themes'))()
     local SaveManager = loadstring(game:HttpGet('https://pastebin.com/raw/rNY1ZdQT'))()
     
     local Window = Library:CreateWindow({
-        Title = 'Decay | Best HVH Script',
+        Title = "DecayW",
         Center = true, 
         AutoShow = true,
         Size = UDim2.fromOffset(550, 560),
         TabPadding = 4,
     })
     
-    
-    
+
+
     local Tabs = {
         Main = Window:AddTab('Legit'), 
         Rage = Window:AddTab('Rage'), 
@@ -785,7 +838,7 @@ gui.DecayLoader:Destroy()
     
         Mode = 'Toggle',
     
-        Text = 'Enable', 
+        Text = 'Toggles Camlock', 
         NoUI = false,
     })
     Options.AimlockBind:OnClick(function()
@@ -1128,7 +1181,7 @@ end)
     
         Mode = 'Toggle',
     
-        Text = 'Enable', 
+        Text = 'Enable Silent Aim', 
         NoUI = false,
     })
     Options.saToggleBind:OnClick(function()
@@ -1463,7 +1516,7 @@ end)
     Strafe:AddSlider('StrafeHeight', {
         Text = 'Height',
         Default = 5,
-        Min = 0,
+        Min = -10,
         Max = 20,
         Rounding = 1,
         Compact = true, 
@@ -1476,15 +1529,18 @@ end)
     local Misc = Tabs.Misc:AddLeftGroupbox('Player')
     local Buy = Tabs.Misc:AddLeftGroupbox('AutoBuy')
    local anti = Tabs.Misc:AddRightGroupbox('Anti Aim')
+   local AntiAimTab = Tabs.Misc:AddRightGroupbox('Anti Aimv2')
    local de = Tabs.Misc:AddRightGroupbox('Desync')
     local Flags = {
         ['Desync_Enabled'] = false,
+        ["vel_breaker"] = false, 
         ['armor'] = false,
         ['anti_Enabled'] = false,
         ['as'] = false,
         ['ar'] = false,
+        ["aa2"] = false, 
     }
-            de:AddSlider('X', {
+         de:AddSlider('X', {
             Text = 'X',
             Default = 0,
             Min = -6000,
@@ -1498,7 +1554,7 @@ end)
             de:AddSlider('Y', {
             Text = 'Y',
             Default = 0,
-            Min = 0,
+            Min = -6000,
             Max = 6000,
             Rounding = 10,
             Compact = false, 
@@ -1524,6 +1580,13 @@ end)
         })
     
         Toggles.Desync:OnChanged(function(newValue)
+            if getgenv().Notifications == true then
+                Notify({
+                    Title = DecayName,
+                    Description = "Desync Enabled",
+                    Duration = 1
+                })
+            end
             Flags["Desync_Enabled"] = newValue
         end)
         local runService = game:GetService("RunService")
@@ -1549,6 +1612,7 @@ end)
                 clientCharacter.HumanoidRootPart.Velocity = oldvel
         end
     end)
+
         anti:AddSlider('AX', {
         Text = 'X',
         Default = 0,
@@ -1589,11 +1653,22 @@ end)
     })
 
     Toggles.AntiAim:OnChanged(function(newValue1)
+        if getgenv().Notifications == true then
+            Notify({
+                Title = DecayName,
+                Description = "Anti Aim Enabled",
+                Duration = 1
+            })
+        end
         Flags["anti_Enabled"] = newValue1
     end)
 
     game.RunService.Heartbeat:Connect(function()
         if Flags['anti_Enabled'] then   
+            game.Players.LocalPlayer.Character.Head.CanCollide = false
+            game.Players.LocalPlayer.Character.UpperTorso.CanCollide = false
+            game.Players.LocalPlayer.Character.LowerTorso.CanCollide = false
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
         local CurrentVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
         game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(Flags["AVelocity_X"],Flags["AVelocity_Y"],Flags["AVelocity_Z"])
         game.RunService.RenderStepped:Wait()
@@ -1601,7 +1676,44 @@ end)
         
         end
     end)     
-
+    anti:AddSlider('Vel', {
+        Text = 'VB Force',
+        Default = 0,
+        Min = -50,
+        Max = 50,
+        Rounding = 1,
+        Compact = false, 
+    })
+    
+    anti:AddToggle('velo', {
+        Text = 'Enable Velocity Breaker',
+        Default = false,
+        Tooltip = 'Enables Velocity Breaker',
+    })
+    
+    -- Assume you have some object named 'Options' and 'Toggles' to store the slider and toggle values
+    
+    -- Connect the slider and toggle events
+    Options.Vel:OnChanged(function()
+        Flags["VVelocity_Z"] = Options.Vel.Value
+    end)
+    
+    Toggles.velo:OnChanged(function(newValue6)
+        Flags["vel_breaker"] = newValue6
+    end)
+    
+    -- Continuously update the character's velocity based on the toggle state
+    game:GetService("RunService").Heartbeat:Connect(function()
+        if Flags['vel_breaker'] then
+            local character = game.Players.LocalPlayer.Character
+            local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+            if humanoidRootPart then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * Flags["VVelocity_Z"]
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame *
+                    CFrame.Angles(0, math.rad(Flags["VVelocity_Z"]), 0)
+            end
+        end
+    end)
     Misc:AddToggle('CFrame', {
         Text = 'Enable',
         Default = false,
@@ -1649,6 +1761,13 @@ end)
     })
     
     Options.CFrameSpeed:OnChanged(function()
+        if getgenv().Notifications == true then
+            Notify({
+                Title = DecayName,
+                Description = "CFrame Speed Enabled",
+                Duration = 1
+            })
+        end
         getgenv().Multiplier = Options.CFrameSpeed.Value
     end)
     
@@ -1660,6 +1779,13 @@ end)
     })
 
     Toggles.AutoStomp:OnChanged(function(newValue3)
+        if getgenv().Notifications == true then
+            Notify({
+                Title = DecayName,
+                Description = "Auto Stomping",
+                Duration = 1
+            })
+        end
     Flags['as'] = newValue3
     end)
 
@@ -1677,6 +1803,13 @@ game.RunService.Heartbeat:Connect(function()
     })
 
     Toggles.AutoReload:OnChanged(function(newValue4)
+        if getgenv().Notifications == true then
+            Notify({
+                Title = DecayName,
+                Description = "Auto Reloading",
+                Duration = 1
+            })
+        end
     Flags['ar'] = newValue4
     end)
 
@@ -1693,7 +1826,103 @@ if game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool
         end
 end
     end)
+    local PredictorPart = Instance.new("Part",game.Workspace)
 
+    local newBillboardx = Instance.new("BillboardGui", PredictorPart)
+    
+    local newFramex = Instance.new("Frame", newBillboardx)
+    local newUiCornorx = Instance.new("UICorner", newFramex)
+    
+    task.spawn(function ()
+        PredictorPart.Anchored = true
+        PredictorPart.CanCollide = false
+        PredictorPart.CFrame = CFrame.new(0,9999,0)
+        PredictorPart.Transparency = 1
+        newBillboardx.Name = "billboardpredictor"
+        newBillboardx.Adornee = PredictorPart
+        newBillboardx.Size = UDim2.new(1, 0, 1, 0)
+        newBillboardx.AlwaysOnTop = true
+        newFramex.Size = UDim2.new(1, 0, 1, 0)
+        newFramex.BackgroundTransparency = 0
+        newUiCornorx.CornerRadius = UDim.new(50, 50)
+    end)
+    
+    AntiAimTab:AddToggle('PredictiorRoblox', {
+        Text = 'Predictor',
+        Default = false, 
+        Tooltip = 'Predictor Enabled', 
+    })
+    
+    Toggles.PredictiorRoblox:OnChanged(function()
+        if Toggles.PredictiorRoblox.Value then
+            PredictorHook = game:GetService("RunService").Stepped:Connect(function ()
+                PredictorPart.CFrame = CFrame.new(LocalPlayer.Character.HumanoidRootPart.Position+(LocalPlayer.Character.HumanoidRootPart.Velocity*0.11))
+                spawn(function ()
+                    newFramex.BackgroundColor3 = PredictorColoxr
+                end)
+            end)
+        elseif Toggles.PredictiorRoblox.Value == false and PredictorHook then
+            PredictorHook:Disconnect()
+            PredictorPart.CFrame = CFrame.new(0,5000,0)
+        end
+    end)
+    
+    Toggles.PredictiorRoblox:AddColorPicker('AddColorPickerForTxxxxxxxxxxracerTargetThingy', {
+        Default = Color3.fromRGB(255,255,255),
+    })
+    
+    Options.AddColorPickerForTxxxxxxxxxxracerTargetThingy:OnChanged(function()
+        PredictorColoxr = Options.AddColorPickerForTxxxxxxxxxxracerTargetThingy.Value
+    end)
+    
+    AntiAimTab:AddToggle('VelUnderGroundToggle', {
+        Text = 'Velocity Underground',
+        Default = false, 
+        Tooltip = 'Velocity Underground Enabled', 
+    })
+    
+    Toggles.VelUnderGroundToggle:OnChanged(function(newValue11)
+        Flags["aa2"] = newValue11
+    end)
+    
+    AntiAimTab:AddSlider('VelocityUndergroundSLider', {
+        Text = 'V-Underground Velocity',
+    
+        Default = 1,
+        Min = 1,
+        Max = 500,
+        Rounding = 2,
+    
+        Compact = false,
+    })
+    
+    Options.VelocityUndergroundSLider:OnChanged(function()
+            Flags["aa22"] = Options.VelocityUndergroundSLider.Value
+    end)
+    
+    AntiAimTab:AddSlider('VelocityHipheightUnderground', {
+        Text = 'HipHeight',
+    
+        Default = 2,
+        Min = 2,
+        Max = 11,
+        Rounding = 2,
+    
+        Compact = false,
+    })
+    
+    Options.VelocityHipheightUnderground:OnChanged(function()
+        VelocityUndergroundHipheight = Options.VelocityHipheightUnderground.Value
+    end)
+    game.RunService.Heartbeat:Connect(function()
+        if Flags["aa2"] then
+        local oldVelocity = LocalPlayer.Character.HumanoidRootPart.Velocity
+        LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(oldVelocity.X, -Flags["aa22"], oldVelocity.Z)
+        LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(oldVelocity.X, oldVelocity.Y, oldVelocity.Z)
+        LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(oldVelocity.X, -Flags["aa22"], oldVelocity.Z)
+        LocalPlayer.Character.Humanoid.HipHeight = VelocityUndergroundHipheight
+        end
+        end)
     local inputManager = game:GetService("VirtualInputManager")
     local userInputService = game:GetService("UserInputService")
     
@@ -1704,6 +1933,13 @@ end
     })
     getgenv().macro = false
     Toggles.Macro:OnChanged(function()
+        if getgenv().Notifications == true then
+            Notify({
+                Title = DecayName,
+                Description = "Toggled Macro",
+                Duration = 1
+            })
+        end
         getgenv().macro  = Toggles.Macro.Value
     end)
     
@@ -1774,6 +2010,13 @@ end
     })
     getgenv().macro = false
     Toggles.AutoClick:OnChanged(function()
+        if getgenv().Notifications == true then
+            Notify({
+                Title = DecayName,
+                Description = "Auto Clicking",
+                Duration = 1
+            })
+        end
         getgenv().click  = Toggles.AutoClick.Value
     end)
     
@@ -1972,6 +2215,13 @@ end
     })
     getgenv().a1 = false
     Toggles.AmmoBind:OnChanged(function()
+        if getgenv().Notifications == true then
+            Notify({
+                Title = DecayName,
+                Description = "Ammo Bought",
+                Duration = 1
+            })
+        end
         getgenv().a1  = Toggles.AmmoBind.Value
     end)
     
@@ -1981,7 +2231,7 @@ end
     
         Mode = 'Toggle',
     
-        Text = 'Macro', 
+        Text = 'Ammo Bind', 
         NoUI = false,
     })
     
@@ -2011,6 +2261,13 @@ end
     })
     getgenv().g1 = false
     Toggles.gunB:OnChanged(function()
+        if getgenv().Notifications == true then
+            Notify({
+                Title = DecayName,
+                Description = "Gun Bought",
+                Duration = 1
+            })
+        end
         getgenv().g1  = Toggles.gunB.Value
     end)
     
@@ -2020,7 +2277,7 @@ end
     
         Mode = 'Toggle',
     
-        Text = 'Macro', 
+        Text = 'Gun Bind', 
         NoUI = false,
     })
     
@@ -2475,11 +2732,11 @@ local VisualsESP = Tabs.Visuals:AddLeftGroupbox('ESP')
     
     
     MenuGroup:AddDropdown('UINotis', {
-        Values = { 'Dys', 'funeral', 'Cory' },
+        Values = { 'Dys', 'funeral'},
         Default = 2, -- number index of the value / string
         Multi = false, -- true / false, allows multiple choices to be selected
     
-        Text = 'Devs',
+        Text = 'Noti Type',
         Tooltip = 'The People Who Made You Good', -- Information shown when you hover over the textbox
     })
     
@@ -2786,7 +3043,7 @@ local VisualsESP = Tabs.Visuals:AddLeftGroupbox('ESP')
         end 
         return Old(self, k) 
     end))
-    
+end)
 if boostframes then
     getgenv().boostFPS = true
 
@@ -2814,7 +3071,6 @@ if boostframes then
     
     end
 end
-end)
 local mt = getrawmetatable(game)
 local backup
 backup = hookfunction(mt.__newindex, newcclosure(function(self, key, value)
@@ -2823,3 +3079,89 @@ value = 16
 end
 return backup(self, key, value)
 end))
+
+    local bgui = Instance.new('BillboardGui', game.Players.LocalPlayer.Character.Head)
+    local tlab = Instance.new('TextLabel', bgui)
+
+    bgui.Name = "clan esp"
+    bgui.Adornee = part
+    bgui.AlwaysOnTop = true
+    bgui.ExtentsOffset = Vector3.new(0, 3, 0)
+    bgui.Size = UDim2.new(0, 5, 0, 5)
+
+    tlab.Name = "Devour n Chloe"
+    tlab.BackgroundColor3 = Color3.new(223,14,217)
+    tlab.BackgroundTransparency = 1
+    tlab.BorderSizePixel = 0
+    tlab.Position = UDim2.new(0, 0, 0, -30)
+    tlab.Size = UDim2.new(1, 0, 7, 0)
+    tlab.Visible = true
+    tlab.ZIndex = 10
+    tlab.TextColor3 = Color3.new(223,14,217)
+    tlab.Font = "Arcade"
+    tlab.TextSize = 23
+            text = "decayW"
+while wait() do
+for i = 1, #text do
+    tlab.Text = string.sub(text,1,i)
+        wait(0.4)
+    end
+end
+NeverSitting = true
+if NeverSitting then 
+       local workspaceChildren = workspace:GetDescendants()
+        for i = 1,#workspaceChildren do 
+            local Child = workspaceChildren[i]
+            if string.find(Child.ClassName:lower(),"seat") then
+                Child.Parent = CoreGui
+            end
+        end
+    else
+        local CoreGuiDescendants = CoreGui:GetDescendants() 
+        for i = 1,#CoreGuiDescendants do 
+            local Child = CoreGuiDescendants[i]
+            if string.find(Child.ClassName:lower(),"seat") then 
+                Child.Parent = workspace
+            end
+        end
+    end
+    game.Workspace.FallenPartsDestroyHeight = -50000
+    hookfunction(game.Players.LocalPlayer.IsInGroup, function() return true end)
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Invooker1/Hub/main/DH-Skin-Changer.lua", true))()
+local decalsyeeted = true -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i, v in pairs(g:GetDescendants()) do
+    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+    elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    end
+end
+for i, e in pairs(l:GetChildren()) do
+    if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+        e.Enabled = false
+    end
+end
