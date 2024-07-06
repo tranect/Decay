@@ -1663,7 +1663,7 @@ end)
         Flags["anti_Enabled"] = newValue1
     end)
 
-    game.RunService.Heartbeat:Connect(function()
+    RunService.Heartbeat:Connect(function()
         if Flags['anti_Enabled'] then   
             game.Players.LocalPlayer.Character.Head.CanCollide = false
             game.Players.LocalPlayer.Character.UpperTorso.CanCollide = false
@@ -1671,7 +1671,7 @@ end)
             game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
         local CurrentVelocity = game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity
         game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(Flags["AVelocity_X"],Flags["AVelocity_Y"],Flags["AVelocity_Z"])
-        game.RunService.RenderStepped:Wait()
+        RunService.RenderStepped:Wait()
         game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = CurrentVelocity
         
         end
@@ -1790,7 +1790,7 @@ end)
     end)
 
 
-game.RunService.Heartbeat:Connect(function()
+    RunService.Heartbeat:Connect(function()
     if Flags['as'] then
     game.ReplicatedStorage.MainEvent:FireServer("Stomp")
     end
@@ -1814,7 +1814,7 @@ game.RunService.Heartbeat:Connect(function()
     end)
 
 
-game.RunService.Heartbeat:Connect(function()
+    RunService.Heartbeat:Connect(function()
     if Flags['ar'] then
 if game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool") then
             if game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):FindFirstChild("Ammo") then
@@ -1914,7 +1914,7 @@ end
     Options.VelocityHipheightUnderground:OnChanged(function()
         VelocityUndergroundHipheight = Options.VelocityHipheightUnderground.Value
     end)
-    game.RunService.Heartbeat:Connect(function()
+        RunService.Heartbeat:Connect(function()
         if Flags["aa2"] then
         local oldVelocity = LocalPlayer.Character.HumanoidRootPart.Velocity
         LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(oldVelocity.X, -Flags["aa22"], oldVelocity.Z)
